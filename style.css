@@ -1,1 +1,240 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #e9e7e2;
+    color: #222;
+}
+
+.presentation {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 40px;
+}
+
+/* TOP BAR */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #bdbab3;
+    padding-bottom: 18px;
+}
+
+.project-name {
+    font-size: 14px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.project-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+
+/* MAIN */
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* INTRO */
+
+.intro {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 400;
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+}
+
+.description {
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* FLOOR PLAN */
+
+.floor-plan-container {
+    width: min(900px, 90vw);
+}
+
+.floor-plan {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.5 / 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            rgba(0,0,0,0.04) 1px,
+            transparent 1px
+        );
+
+    background-size: 30px 30px;
+
+    border: 1px solid #aaa79f;
+}
+
+
+/* PLAN TITLE */
+
+.plan-title {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #777;
+}
+
+
+/* CAMERA BUTTONS */
+
+.camera {
+    position: absolute;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: 1px solid #222;
+
+    background: #e9e7e2;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.camera span {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* CAMERA POSITIONS */
+
+.camera-01 {
+    left: 25%;
+    top: 50%;
+}
+
+.camera-02 {
+    left: 45%;
+    top: 35%;
+}
+
+.camera-03 {
+    left: 68%;
+    top: 42%;
+}
+
+.camera-04 {
+    left: 75%;
+    top: 70%;
+}
+
+.camera-05 {
+    left: 40%;
+    top: 72%;
+}
+
+
+/* HOVER */
+
+.camera:hover {
+    transform: scale(1.15);
+    background: #222;
+    color: white;
+}
+
+
+/* BOTTOM BAR */
+
+.bottom-bar {
+    border-top: 1px solid #bdbab3;
+
+    padding-top: 18px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .presentation {
+        padding: 20px;
+    }
+
+    .project-label {
+        display: none;
+    }
+
+    .intro {
+        margin-bottom: 30px;
+    }
+
+    .floor-plan-container {
+        width: 100%;
+    }
+
+    .camera {
+        width: 36px;
+        height: 36px;
+    }
+
+}
