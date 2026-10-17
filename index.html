@@ -1,100 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Architecture Presentation</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f1ec">
+  <meta name="description" content="An interactive architectural presentation by Visheh Architecture.">
+  <title>Baagh Ferdows Residence — Visheh Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Visheh Architecture home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>VISHEH</strong><small>ARCHITECTURE STUDIO</small></span>
+      </a>
+      <div class="topbar-project"><span class="status-dot"></span> BAAGH FERDOWS <span class="topbar-divider">/</span> RESIDENCE</div>
+      <a class="about-link" href="#project-notes">PROJECT NOTES <span aria-hidden="true">↗</span></a>
+    </header>
 
-    <div class="presentation">
+    <main>
+      <section class="welcome-row" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">AN INTERACTIVE ARCHITECTURAL PRESENTATION</p>
+          <h1 id="page-title">A home, seen from within<span>.</span></h1>
+          <p class="welcome-copy">Choose a camera on the plan to move between fixed views of the residence.<br class="desktop-break"> Select a material marker in a view to inspect its specification.</p>
+        </div>
+        <div class="view-count" aria-label="Five camera viewpoints">
+          <span class="view-count-number">05</span>
+          <span class="view-count-label">FIXED<br>VIEWPOINTS</span>
+        </div>
+      </section>
 
-        <header class="top-bar">
-            <div class="project-name">
-                VISHEH ARCHITECTURE
+      <section class="workspace" aria-label="Interactive floor plan and selected viewpoint">
+        <article class="plan-panel panel">
+          <div class="panel-heading">
+            <div><span class="section-index">01</span><h2>Explore the plan</h2></div>
+            <span class="scale-note">SCHEMATIC · NOT TO SCALE</span>
+          </div>
+          <div class="plan-canvas" id="plan-canvas">
+            <svg class="floorplan-art" viewBox="0 0 820 570" role="img" aria-labelledby="plan-svg-title plan-svg-desc">
+              <title id="plan-svg-title">Illustrative residence floor plan</title>
+              <desc id="plan-svg-desc">A schematic apartment layout showing living and dining, kitchen, three bedrooms, bathrooms, entry, and balconies. Select numbered camera markers to open fixed views.</desc>
+              <defs>
+                <pattern id="plan-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M 24 0 L 0 0 0 24" fill="none" stroke="#e9e6df" stroke-width=".7"/></pattern>
+                <pattern id="wood-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#c1a987" stroke-width="1" opacity=".42"/></pattern>
+              </defs>
+              <rect width="820" height="570" fill="url(#plan-grid)"/>
+              <!-- Balcony terraces -->
+              <g class="balcony"><rect x="104" y="48" width="196" height="42"/><path d="M124 57v24m19-24v24m19-24v24m19-24v24m19-24v24m19-24v24m19-24v24"/><text x="202" y="76">BALCONY 01</text></g>
+              <g class="balcony"><rect x="300" y="48" width="150" height="42"/><path d="M319 57v24m19-24v24m19-24v24m19-24v24m19-24v24m19-24v24"/><text x="375" y="76">BALCONY 02</text></g>
+              <g class="balcony"><rect x="450" y="48" width="170" height="42"/><path d="M469 57v24m19-24v24m19-24v24m19-24v24m19-24v24m19-24v24"/><text x="535" y="76">BALCONY 03</text></g>
+              <!-- Main apartment envelope -->
+              <path class="outer-wall" d="M104 90H620V500H104Z"/>
+              <rect class="room warm-room" x="110" y="96" width="190" height="151"/><rect class="room" x="306" y="96" width="144" height="151"/><rect class="room" x="456" y="96" width="158" height="151"/>
+              <rect class="room public-room" x="110" y="253" width="300" height="241"/><rect class="room" x="416" y="253" width="94" height="112"/><rect class="room" x="516" y="253" width="98" height="112"/>
+              <rect class="room" x="416" y="371" width="94" height="123"/><rect class="room" x="516" y="371" width="98" height="123"/>
+              <!-- Wall joins and door openings -->
+              <path class="inner-wall" d="M300 96V247M450 96V247M110 250H184M224 250H410M416 247V277M416 315V365M510 253V286M510 324V365M416 371V401M416 440V494M516 371V399M516 438V494M300 253V494"/>
+              <path class="door-swing" d="M184 250a40 40 0 0 1 40 40M416 277a38 38 0 0 0-38 38M510 286a38 38 0 0 1 38 38M416 401a39 39 0 0 1 39 39M516 399a39 39 0 0 0 39 39"/>
+              <!-- Windows / balcony sliders -->
+              <path class="window-line" d="M130 91H273M324 91H427M478 91H596M112 115v100M112 291v164"/>
+              <!-- Light furniture diagrams -->
+              <g class="furniture"><rect x="137" y="123" width="98" height="76" rx="3"/><line x1="137" y1="145" x2="235" y2="145"/><rect x="151" y="212" width="69" height="13" rx="4"/><rect x="334" y="130" width="84" height="56" rx="2"/><circle cx="376" cy="211" r="18"/><rect x="482" y="131" width="100" height="20" rx="3"/><rect x="482" y="165" width="100" height="54" rx="2"/><rect x="147" y="319" width="118" height="45" rx="15"/><rect x="147" y="371" width="118" height="45" rx="15"/><rect x="151" y="321" width="48" height="40" rx="12"/><rect x="210" y="321" width="48" height="40" rx="12"/><circle cx="340" cy="362" r="33"/><circle cx="340" cy="362" r="4"/><circle cx="314" cy="326" r="7"/><circle cx="366" cy="326" r="7"/><circle cx="314" cy="398" r="7"/><circle cx="366" cy="398" r="7"/><rect x="435" y="277" width="57" height="24" rx="2"/><rect x="435" y="315" width="57" height="34" rx="2"/><rect x="536" y="281" width="57" height="21" rx="2"/><rect x="536" y="318" width="57" height="33" rx="2"/><rect x="433" y="404" width="58" height="70" rx="2"/><rect x="532" y="404" width="65" height="68" rx="2"/><path d="M442 414h40m-40 12h40m-40 12h40m-40 12h40"/></g>
+              <!-- Room labels -->
+              <g class="room-label"><text x="206" y="112">BEDROOM 02</text><text x="378" y="112">BEDROOM 03</text><text x="535" y="112">MASTER BEDROOM</text><text x="205" y="281">LIVING</text><text x="205" y="464">DINING</text><text x="352" y="298">KITCHEN</text><text x="463" y="267">BATH 01</text><text x="565" y="267">TOILET</text><text x="463" y="386">ENTRY</text><text x="565" y="386">BATH 02</text></g>
+              <g class="north-mark"><path d="M680 126v-44m0 0-7 12m7-12 7 12"/><text x="680" y="143">N</text></g>
+              <g class="dimension"><path d="M104 523H620m-516-5v10m516-10v10"/><text x="362" y="541">RESIDENCE · ILLUSTRATIVE PLAN</text></g>
+            </svg>
+            <svg class="camera-links" id="camera-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line data-link="0"/><line data-link="1"/><line data-link="2"/><line data-link="3"/><line data-link="4"/></svg>
+            <div class="camera-layer" aria-label="Camera locations">
+              <button class="camera-marker is-active" type="button" data-camera="0" aria-label="Open camera 01, living room" aria-pressed="true"><span>01</span></button>
+              <button class="camera-marker" type="button" data-camera="1" aria-label="Open camera 02, dining area" aria-pressed="false"><span>02</span></button>
+              <button class="camera-marker" type="button" data-camera="2" aria-label="Open camera 03, kitchen" aria-pressed="false"><span>03</span></button>
+              <button class="camera-marker" type="button" data-camera="3" aria-label="Open camera 04, master bedroom" aria-pressed="false"><span>04</span></button>
+              <button class="camera-marker" type="button" data-camera="4" aria-label="Open camera 05, bedroom 02" aria-pressed="false"><span>05</span></button>
             </div>
+          </div>
+          <div class="plan-legend"><span><i class="legend-dot"></i> CAMERA POSITION</span><span class="plan-legend-hint">SELECT A MARKER TO CHANGE VIEW</span></div>
+        </article>
 
-            <div class="project-label">
-                RESIDENTIAL PROJECT
+        <article class="view-panel panel" aria-labelledby="view-title">
+          <div class="panel-heading view-panel-heading">
+            <div><span class="section-index">02</span><h2 id="view-title">Selected view</h2></div>
+            <span class="view-number" id="view-number">01 <span>/ 05</span></span>
+          </div>
+          <div class="render-frame" id="render-frame">
+            <img class="render-image" id="render-image" alt="" hidden>
+            <div class="render-fallback" id="render-fallback" aria-live="polite">
+              <div class="fallback-scene" aria-hidden="true">
+                <div class="scene-ceiling"></div><div class="scene-wall scene-wall-back"></div><div class="scene-wall scene-wall-side"></div><div class="scene-window"><i></i><i></i></div><div class="scene-console"></div><div class="scene-rug"></div><div class="scene-sofa"><i></i><i></i><b></b></div><div class="scene-table"></div><div class="scene-plant"><i></i><i></i><i></i><b></b></div><div class="scene-caption">A FIXED CAMERA VIEW</div>
+              </div>
+              <div class="render-empty-note"><span class="empty-note-icon">↗</span><span>YOUR RENDER WILL APPEAR HERE</span></div>
             </div>
-        </header>
+            <div class="render-topline"><span id="render-room-label">LIVING ROOM</span><span class="render-tag"><i></i> FIXED FRAME</span></div>
+            <div class="hotspot-layer" id="hotspot-layer" aria-label="Material information markers"></div>
+          </div>
+          <div class="view-meta">
+            <div><p class="view-kicker" id="view-kicker">CAMERA 01 · PUBLIC LIVING</p><p class="view-description" id="view-description">Living room toward the garden terrace</p></div>
+            <div class="view-controls"><button class="arrow-button" id="previous-view" type="button" aria-label="Previous camera">←</button><button class="arrow-button" id="next-view" type="button" aria-label="Next camera">→</button></div>
+          </div>
+          <div class="material-hint"><span class="material-icon" aria-hidden="true">✳</span><span>Material markers appear on each render. Tap or click one for details.</span></div>
+        </article>
+      </section>
 
+      <section class="project-notes" id="project-notes">
+        <span class="notes-label">PROJECT</span><p>Baagh Ferdows Residence <span>·</span> Interior renovation presentation</p>
+        <span class="notes-credit">VISHEH ARCHITECTURE <span>—</span> 2026</span>
+      </section>
+    </main>
+  </div>
 
-        <main class="main-content">
-
-            <section class="intro">
-
-                <p class="eyebrow">
-                    INTERACTIVE PRESENTATION
-                </p>
-
-                <h1>
-                    Explore the House
-                </h1>
-
-                <p class="description">
-                    Select a camera position to explore the proposed interior.
-                </p>
-
-            </section>
-
-
-            <section class="floor-plan-container">
-
-                <div class="floor-plan">
-
-                    <div class="plan-title">
-                        FLOOR PLAN
-                    </div>
-
-                    <!-- Camera positions -->
-                    <button class="camera camera-01">
-                        <span>01</span>
-                    </button>
-
-                    <button class="camera camera-02">
-                        <span>02</span>
-                    </button>
-
-                    <button class="camera camera-03">
-                        <span>03</span>
-                    </button>
-
-                    <button class="camera camera-04">
-                        <span>04</span>
-                    </button>
-
-                    <button class="camera camera-05">
-                        <span>05</span>
-                    </button>
-
-                </div>
-
-            </section>
-
-        </main>
-
-
-        <footer class="bottom-bar">
-
-            <span>
-                SELECT A CAMERA TO BEGIN
-            </span>
-
-            <span>
-                01 — 05
-            </span>
-
-        </footer>
-
-    </div>
-
-
-    <script src="script.js"></script>
-
+  <dialog class="material-dialog" id="material-dialog" aria-labelledby="material-title">
+    <form method="dialog"><button class="dialog-close" aria-label="Close material details">×</button></form>
+    <p class="eyebrow" id="material-category">MATERIAL SPECIFICATION</p>
+    <h2 id="material-title">Finish details</h2>
+    <p class="dialog-description" id="material-description"></p>
+    <div class="material-spec-grid"><div><span>MANUFACTURER</span><strong id="material-maker">To be confirmed</strong></div><div><span>FINISH / COLOUR</span><strong id="material-finish">To be confirmed</strong></div><div><span>LOCATION</span><strong id="material-location">To be confirmed</strong></div></div>
+    <p class="dialog-footnote">Material information is editable in <code>script.js</code>.</p>
+  </dialog>
+  <script src="script.js"></script>
 </body>
 </html>
