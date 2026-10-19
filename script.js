@@ -83,6 +83,31 @@ accessForm.addEventListener('submit', async (event) => {
   }
 });
 
+// Fit the whole plan initially; enlarge the image and its markers together.
+const planViewport = document.querySelector('.plan-scroll');
+const planStage = document.querySelector('#plan-stage');
+let planZoom = 1;
+function setPlanZoom(next) {
+  const previous = planZoom;
+  planZoom = Math.max(1, Math.min(3, next));
+  const centerX = (planViewport.scrollLeft + planViewport.clientWidth / 2) / previous;
+  const centerY = (planViewport.scrollTop + planViewport.clientHeight / 2) / previous;
+  planStage.style.width = `${planZoom * 100}%`;
+  document.querySelector('#zoom-level').textContent = `${Math.round(planZoom * 100)}%`;
+  document.querySelector('#zoom-out').disabled = planZoom === 1;
+  document.querySelector('#zoom-in').disabled = planZoom === 3;
+  requestAnimationFrame(() => {
+    planViewport.scrollLeft = planZoom === 1 ? 0 : centerX * planZoom - planViewport.clientWidth / 2;
+    planViewport.scrollTop = planZoom === 1 ? 0 : centerY * planZoom - planViewport.clientHeight / 2;
+  });
+}
+document.querySelector('#zoom-in').addEventListener('click', () => setPlanZoom(planZoom + .5));
+document.querySelector('#zoom-out').addEventListener('click', () => setPlanZoom(planZoom - .5));
+document.querySelector('#zoom-fit').addEventListener('click', () => setPlanZoom(1));
+new ResizeObserver(() => {
+  planStage.style.setProperty('--marker-scale', Math.min(1, planStage.clientWidth / 760));
+}).observe(planStage);
+
 const dialog = document.querySelector('#render-dialog');
 let selectedView = '1-south';
 const renders = new Map(Object.entries(window.RENDER_IMAGES || {}));
