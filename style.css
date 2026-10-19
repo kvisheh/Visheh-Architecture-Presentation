@@ -24,8 +24,8 @@ h2 { font-family:Georgia,serif; font-size:25px; font-weight:400; margin:0; }
 .placeholder-label { position:absolute; left:0; right:0; bottom:18px; text-align:center; color:var(--muted); font-size:9px; letter-spacing:2px; }
 #plan-image { display:block; width:100%; height:auto; }
 .room-marker { position:absolute; transform:translate(-50%,-50%); width:26px; height:26px; }
-.view-arrow { position:absolute; width:30px; height:30px; padding:0; border:0; background:transparent; color:var(--accent); font-size:25px; line-height:30px; }
-.view-arrow:hover,.view-arrow[aria-pressed="true"] { color:#1c2613; background:#dce1d3; border-radius:50%; }
+.view-arrow { position:absolute; width:30px; height:30px; padding:0; border:0; background:transparent; color:#c82323; font-size:25px; font-weight:800; -webkit-text-stroke:.6px currentColor; line-height:30px; }
+.view-arrow:hover,.view-arrow[aria-pressed="true"] { color:#a01717; background:#f8dddd; border-radius:50%; }
 .view-arrow.north { left:-2px; bottom:25px; }
 .view-arrow.south { left:-2px; top:25px; }
 .view-arrow.east { left:25px; top:-2px; }
@@ -52,7 +52,7 @@ body:has(dialog[open]) { overflow:hidden; }
 .render-placeholder p,.viewer-caption>p { font-size:12px; color:var(--muted); line-height:1.7; }
 .viewer-caption { display:flex; justify-content:space-between; gap:30px; margin-top:24px; }
 .viewer-caption>p { max-width:280px; }
-@media(max-width:600px) { .presentation { padding:22px 20px; } .project-name span,.project-label { display:none; } .intro { padding:42px 0 30px; } .plan-caption span:last-child,.bottom-bar span:last-child { display:none; } .placeholder-label { font-size:7px; bottom:8px; letter-spacing:1px; }  .upload-grid,.position-controls { grid-template-columns:1fr; gap:18px; } dialog { padding:16px; } .viewer-caption { flex-direction:column; gap:8px; } .viewer-caption>p { max-width:none; } .viewer-header .eyebrow { font-size:8px; } }
+@media(max-width:600px) { .presentation { padding:22px 20px; } .project-name span,.project-label { display:none; } .intro { padding:42px 0 30px; } .bottom-bar span:last-child { display:none; } .placeholder-label { font-size:7px; bottom:8px; letter-spacing:1px; }  .upload-grid,.position-controls { grid-template-columns:1fr; gap:18px; } dialog { padding:16px; } .viewer-caption { flex-direction:column; gap:8px; } .viewer-caption>p { max-width:none; } .viewer-header .eyebrow { font-size:8px; } }
 @media(prefers-reduced-motion:no-preference) { .view-arrow,.back-button { transition:background .2s; } }
 
 @media(max-width:600px) { .room-marker { transform:translate(-50%,-50%) scale(.7); } }
