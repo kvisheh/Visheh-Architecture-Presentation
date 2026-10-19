@@ -8,17 +8,30 @@
 </head>
 <body>
   <section id="access-gate" class="access-gate" aria-labelledby="access-title">
-    <div class="access-card">
-      <p class="eyebrow">VISHEH ARCHITECTURE</p>
-      <h1 id="access-title">Baagh Ferdows</h1>
-      <p class="description">Enter your passcode to view the presentation.</p>
-      <form id="access-form">
-        <label for="access-code">Passcode</label>
-        <input id="access-code" type="password" inputmode="numeric" autocomplete="current-password" required aria-describedby="access-error">
-        <button type="submit">Enter presentation →</button>
-        <p id="access-error" role="alert" aria-live="polite"></p>
-      </form>
-      <noscript>Enable JavaScript to open this presentation.</noscript>
+    <div class="entrance-story">
+      <a class="entrance-brand" href="./">VISHEH <span>ARCHITECTURE</span></a>
+      <div class="entrance-art" aria-hidden="true"><div class="arch arch-one"></div><div class="arch arch-two"></div><div class="arch arch-three"></div><div class="art-line"></div><span>BF</span></div>
+      <div class="entrance-story-caption"><span>THOUGHTFULLY DESIGNED.</span><span>PERSONALLY EXPERIENCED.</span></div>
+    </div>
+    <div class="entrance-main">
+      <div class="access-card">
+        <p class="eyebrow">A PRIVATE INVITATION</p>
+        <h1 id="access-title">Baagh Ferdows<span>Your home, envisioned.</span></h1>
+        <p class="description">A closer look at the spaces made for you.<br>Enter your passcode to step inside.</p>
+        <form id="access-form">
+          <div class="code-label"><label for="access-code">YOUR PASSCODE</label><button id="toggle-code" type="button" aria-pressed="false">Show passcode</button></div>
+          <div class="code-entry">
+            <input id="access-code" class="code-input" type="password" inputmode="none" autocomplete="off" maxlength="7" pattern="[0-9]{7}" required aria-describedby="access-error code-hint">
+            <div class="code-dots" aria-hidden="true"><span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span></div>
+          </div>
+          <p id="code-hint" class="code-hint">Use the keypad or type your 7-digit code.</p>
+          <div class="numeric-keypad" role="group" aria-label="Passcode keypad"><button type="button" class="keypad-key" data-digit="1" aria-label="Digit 1">1</button><button type="button" class="keypad-key" data-digit="2" aria-label="Digit 2">2</button><button type="button" class="keypad-key" data-digit="3" aria-label="Digit 3">3</button><button type="button" class="keypad-key" data-digit="4" aria-label="Digit 4">4</button><button type="button" class="keypad-key" data-digit="5" aria-label="Digit 5">5</button><button type="button" class="keypad-key" data-digit="6" aria-label="Digit 6">6</button><button type="button" class="keypad-key" data-digit="7" aria-label="Digit 7">7</button><button type="button" class="keypad-key" data-digit="8" aria-label="Digit 8">8</button><button type="button" class="keypad-key" data-digit="9" aria-label="Digit 9">9</button><button id="clear-code" class="keypad-action" type="button">Clear</button><button type="button" class="keypad-key" data-digit="0" aria-label="Digit 0">0</button><button id="delete-code" class="keypad-action" type="button" aria-label="Delete last digit">⌫</button></div>
+          <button id="enter-residence" class="enter-residence" type="submit" disabled>Enter residence <span aria-hidden="true">→</span></button>
+          <p id="access-error" role="alert" aria-live="polite"></p>
+        </form>
+        <noscript>Enable JavaScript to open this presentation.</noscript>
+        <p class="entrance-footer">VISHEH ARCHITECTURE <span>RESIDENTIAL COLLECTION</span></p>
+      </div>
     </div>
   </section>
 

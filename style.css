@@ -78,3 +78,62 @@ body:has(dialog[open]) { overflow:hidden; }
 .access-card button { width:100%; padding:15px; margin-top:16px; border:0; background:var(--accent); color:white; }
 .access-card button:disabled { opacity:.6; }
 #access-error { min-height:1.6em; color:#a01717; font-size:13px; line-height:1.6; }
+
+/* Client entrance */
+.access-gate { min-height:100dvh; display:grid; grid-template-columns:1fr 1fr; padding:0; background:#f3f0e9; }
+.entrance-story { align-self:stretch; position:relative; overflow:hidden; min-height:800px; padding:44px 48px; display:flex; flex-direction:column; justify-content:space-between; background:#343b33; color:#ede9de; }
+.entrance-brand { z-index:1; color:inherit; text-decoration:none; font-size:20px; letter-spacing:5px; }
+.entrance-brand span { display:block; margin-top:10px; font-size:9px; letter-spacing:3.4px; }
+.entrance-art { position:absolute; inset:18% 12% 12%; }
+.arch { position:absolute; border:1px solid #a69b7d; border-radius:220px 220px 0 0; bottom:0; }
+.arch-one { inset:0 10% 0; background:linear-gradient(120deg,#92866a20,transparent 60%); }
+.arch-two { inset:8% 19% 0; border-color:#a69b7d70; }
+.arch-three { inset:16% 28% 0; border-color:#a69b7d40; }
+.art-line { position:absolute; left:-30%; right:-30%; bottom:15%; height:1px; background:#a69b7d70; }
+.entrance-art>span { position:absolute; inset:0; display:grid; place-items:center; font-family:Georgia,serif; font-size:clamp(70px,10vw,150px); font-weight:400; letter-spacing:-8px; color:#cabfa6; }
+.entrance-story-caption { z-index:1; display:flex; justify-content:space-between; gap:15px; font-size:8px; line-height:1.8; letter-spacing:1.7px; }
+.entrance-main { display:grid; place-items:center; padding:48px 32px 28px; }
+.access-card { width:min(100%,350px); }
+.access-card>.eyebrow { font-size:9px; color:#887858; letter-spacing:2.5px; }
+.access-card h1 { font-family:Georgia,serif; font-size:clamp(38px,4vw,56px); font-weight:400; letter-spacing:-2px; margin:20px 0 16px; line-height:1.15; }
+.access-card h1 span { display:block; margin-top:13px; font-family:Arial,sans-serif; font-size:11px; font-weight:400; letter-spacing:2px; color:#76756b; }
+.access-card>.description { font-size:12px; line-height:1.9; margin:22px 0 28px; }
+.access-card form { margin:0; }
+.code-label { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.code-label label { font-size:9px; letter-spacing:1.7px; color:#666b5f; }
+.access-card .code-label button { width:auto; margin:0; padding:8px 0; color:#77715f; background:none; border:0; font-size:10px; }
+.code-entry { position:relative; margin-top:8px; }
+.access-card .code-input { position:absolute; inset:0; opacity:0; width:100%; height:100%; margin:0; padding:0; cursor:text; }
+.code-entry:focus-within { outline:2px solid #9a8965; outline-offset:5px; }
+.code-dots { display:grid; grid-template-columns:repeat(7,1fr); gap:9px; pointer-events:none; }
+.code-dot { height:42px; border-bottom:1px solid #c6c1b3; display:grid; place-items:center; color:#30372e; font-size:13px; }
+.code-dot:empty::after { content:''; width:5px; height:5px; background:#c8c3b6; border-radius:50%; }
+.code-dot.filled { border-color:#827353; }
+.code-hint { font-size:10px; color:#868477; margin:12px 0 18px; }
+.numeric-keypad { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.access-card .numeric-keypad button { width:100%; min-height:48px; margin:0; padding:10px; border:1px solid #d9d4c8; border-radius:2px; color:#343b33; background:#faf8f3; font-size:21px; font-weight:400; touch-action:manipulation; }
+.access-card .numeric-keypad button:hover { background:#e8e3d6; border-color:#b5a581; }
+.access-card .numeric-keypad button:active { background:#dcd4c2; }
+.access-card .numeric-keypad .keypad-action { font-size:12px; background:transparent; border-color:transparent; color:#7d7767; }
+.access-card .numeric-keypad #delete-code { font-size:22px; }
+.access-card .enter-residence { width:100%; display:flex; justify-content:space-between; align-items:center; min-height:50px; margin-top:18px; padding:15px 18px; border:1px solid #343b33; border-radius:2px; background:#343b33; color:#f8f5ee; font-size:12px; letter-spacing:.4px; }
+.access-card .enter-residence:disabled { opacity:.45; cursor:default; }
+.access-card .enter-residence:not(:disabled):hover { background:#4c5546; }
+#access-error { min-height:18px; font-size:11px; line-height:1.6; margin:10px 0; }
+.entrance-footer { border-top:1px solid #d9d4c8; padding-top:16px; display:flex; justify-content:space-between; gap:12px; font-size:7px; letter-spacing:1.3px; color:#969080; }
+@media(max-width:800px) {
+ .access-gate { grid-template-columns:1fr; }
+ .entrance-story { min-height:96px; padding:25px 28px; }
+ .entrance-brand { font-size:15px; letter-spacing:4px; }
+ .entrance-brand span { font-size:7px; margin-top:7px; }
+ .entrance-art { inset:-95px 5% -130px 55%; opacity:.5; }
+ .entrance-art>span { font-size:65px; }
+ .entrance-story-caption { display:none; }
+ .entrance-main { padding:30px 26px 22px; }
+ .access-card h1 { font-size:42px; margin-top:16px; }
+ .access-card>.description { margin:18px 0 22px; }
+}
+@media(prefers-reduced-motion:no-preference) { .access-card button { transition:background .16s,border-color .16s; } }
+
+.entrance-story,.entrance-main { width:100%; }
+@media(max-width:800px) { .entrance-art>span { display:none; } }

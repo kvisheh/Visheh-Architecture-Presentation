@@ -1,10 +1,60 @@
 // Basic client-side gate; this does not restrict access to static assets.
 const accessForm = document.querySelector('#access-form');
+const codeInput = document.querySelector('#access-code');
+const enterResidence = document.querySelector('#enter-residence');
+let revealCode = false;
+let checkingCode = false;
+function updateCode() {
+  codeInput.value = codeInput.value.replace(/[^0-9]/g, '').slice(0, 7);
+  document.querySelectorAll('.code-dot').forEach((dot, index) => {
+    const filled = index < codeInput.value.length;
+    dot.classList.toggle('filled', filled);
+    dot.textContent = filled ? (revealCode ? codeInput.value[index] : '●') : '';
+  });
+  enterResidence.disabled = checkingCode || codeInput.value.length !== 7;
+  codeInput.removeAttribute('aria-invalid');
+  document.querySelector('#access-error').textContent = '';
+}
+codeInput.addEventListener('input', updateCode);
+for (const key of document.querySelectorAll('[data-digit]')) {
+  key.addEventListener('click', () => {
+    if (checkingCode || codeInput.value.length >= 7) return;
+    codeInput.value += key.dataset.digit;
+    updateCode();
+  });
+}
+document.querySelector('#delete-code').addEventListener('click', () => {
+  if (checkingCode) return;
+  codeInput.value = codeInput.value.slice(0, -1); updateCode();
+});
+document.querySelector('#clear-code').addEventListener('click', () => {
+  if (checkingCode) return;
+  codeInput.value = ''; updateCode();
+});
+document.querySelector('#toggle-code').addEventListener('click', (event) => {
+  revealCode = !revealCode;
+  event.currentTarget.setAttribute('aria-pressed', String(revealCode));
+  event.currentTarget.textContent = revealCode ? 'Hide passcode' : 'Show passcode';
+  updateCode();
+});
+document.querySelector('#access-gate').addEventListener('keydown', (event) => {
+  if (event.target === codeInput || event.ctrlKey || event.metaKey || event.altKey || checkingCode) return;
+  if (/^[0-9]$/.test(event.key)) {
+    event.preventDefault(); codeInput.value += event.key; updateCode();
+  } else if (event.key === 'Backspace' || event.key === 'Delete') {
+    event.preventDefault(); codeInput.value = codeInput.value.slice(0, -1); updateCode();
+  } else if (event.key === 'Enter' && !enterResidence.disabled && event.target.tagName !== 'BUTTON') {
+    event.preventDefault(); accessForm.requestSubmit();
+  }
+});
+
 accessForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const input = document.querySelector('#access-code');
   const error = document.querySelector('#access-error');
-  const submit = accessForm.querySelector('button');
+  const submit = enterResidence;
+  if (checkingCode || input.value.length !== 7) return;
+  checkingCode = true;
   error.textContent = '';
   submit.disabled = true;
   try {
@@ -15,6 +65,8 @@ accessForm.addEventListener('submit', async (event) => {
       document.querySelector('#access-gate').hidden = true;
       document.querySelector('#client-presentation').hidden = false;
       input.value = '';
+      revealCode = false;
+      updateCode();
       document.querySelector('#plan-heading').focus({ preventScroll: true });
       window.scrollTo(0, 0);
     } else {
@@ -26,7 +78,8 @@ accessForm.addEventListener('submit', async (event) => {
   } catch {
     error.textContent = 'Please open this presentation using its HTTPS website address.';
   } finally {
-    submit.disabled = false;
+    checkingCode = false;
+    submit.disabled = input.value.length !== 7;
   }
 });
 
