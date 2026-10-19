@@ -1,100 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Architecture Presentation</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visheh — Apartment presentation</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <div class="presentation">
-
-        <header class="top-bar">
-            <div class="project-name">
-                VISHEH ARCHITECTURE
-            </div>
-
-            <div class="project-label">
-                RESIDENTIAL PROJECT
-            </div>
-        </header>
-
-
-        <main class="main-content">
-
-            <section class="intro">
-
-                <p class="eyebrow">
-                    INTERACTIVE PRESENTATION
-                </p>
-
-                <h1>
-                    Explore the House
-                </h1>
-
-                <p class="description">
-                    Select a camera position to explore the proposed interior.
-                </p>
-
-            </section>
-
-
-            <section class="floor-plan-container">
-
-                <div class="floor-plan">
-
-                    <div class="plan-title">
-                        FLOOR PLAN
-                    </div>
-
-                    <!-- Camera positions -->
-                    <button class="camera camera-01">
-                        <span>01</span>
-                    </button>
-
-                    <button class="camera camera-02">
-                        <span>02</span>
-                    </button>
-
-                    <button class="camera camera-03">
-                        <span>03</span>
-                    </button>
-
-                    <button class="camera camera-04">
-                        <span>04</span>
-                    </button>
-
-                    <button class="camera camera-05">
-                        <span>05</span>
-                    </button>
-
-                </div>
-
-            </section>
-
-        </main>
-
-
-        <footer class="bottom-bar">
-
-            <span>
-                SELECT A CAMERA TO BEGIN
-            </span>
-
-            <span>
-                01 — 05
-            </span>
-
-        </footer>
-
-    </div>
-
-
-    <script src="script.js"></script>
-
+  <div class="presentation">
+    <header class="top-bar"><a class="project-name" href="./">VISHEH <span>ARCHITECTURE</span></a><span class="project-label">RESIDENTIAL PROJECT / 216 m²</span></header>
+    <main>
+      <section class="intro"><p class="eyebrow">A HOME, FROM EVERY ANGLE</p><h1>Step inside.</h1><p class="description">Start with the plan. Select a viewpoint to explore the space.</p></section>
+      <section class="plan-section" aria-labelledby="plan-heading">
+        <div class="section-heading"><h2 id="plan-heading">The apartment</h2><span class="eyebrow">01 / FLOOR PLAN</span></div>
+        <div class="plan-scroll" tabindex="0" role="region" aria-label="Apartment plan; scroll horizontally on small screens"><div class="floor-plan" id="plan-stage">
+          <div id="plan-placeholder" hidden></div>
+          <img id="plan-image" src="assets/apartment-plan.png" alt="Floor plan of the 216 square metre apartment showing the updated apartment layout">
+          <div class="room-marker" id="camera-01" style="left:74.75412%;top:19.10638%"><button class="view-arrow north" data-room="1" data-direction="north" aria-label="Master bedroom, facing north">↑</button><button class="view-arrow south" data-room="1" data-direction="south" aria-label="Master bedroom, facing south">↓</button></div>
+          <div class="room-marker" id="camera-02" style="left:76.94710%;top:43.09218%"><button class="view-arrow north" data-room="2" data-direction="north" aria-label="Bedroom, facing north">↑</button><button class="view-arrow south" data-room="2" data-direction="south" aria-label="Bedroom, facing south">↓</button><button class="view-arrow east" data-room="2" data-direction="east" aria-label="Bedroom, facing east">→</button></div>
+          <div class="room-marker" id="camera-03" style="left:72.56114%;top:61.74780%"><button class="view-arrow east" data-room="3" data-direction="east" aria-label="Bedroom, facing east">→</button><button class="view-arrow west" data-room="3" data-direction="west" aria-label="Bedroom, facing west">←</button></div>
+          <div class="room-marker" id="camera-04" style="left:26.50851%;top:69.74307%"><button class="view-arrow south" data-room="4" data-direction="south" aria-label="Dining room, facing south">↓</button></div>
+          <div class="room-marker" id="camera-05" style="left:33.08745%;top:61.74780%"><button class="view-arrow north" data-room="5" data-direction="north" aria-label="Foyer and kitchen, facing north">↑</button></div>
+          <div class="room-marker" id="camera-06" style="left:30.89447%;top:40.42709%"><button class="view-arrow east" data-room="6" data-direction="east" aria-label="Foyer, facing east">→</button></div>
+          <div class="room-marker" id="camera-07" style="left:39.66640%;top:51.08745%"><button class="view-arrow west" data-room="7" data-direction="west" aria-label="Kitchen, facing west">←</button></div>
+          <div class="room-marker" id="camera-08" style="left:26.50851%;top:45.75727%"><button class="view-arrow south" data-room="8" data-direction="south" aria-label="Kitchen and dining, facing south">↓</button></div>
+          <div class="room-marker" id="camera-09" style="left:57.21026%;top:67.07798%"><button class="view-arrow southwest" data-room="9" data-direction="southwest" aria-label="Living area, facing southwest">↙</button></div>
+          <div class="room-marker" id="camera-10" style="left:48.43833%;top:75.07325%"><button class="view-arrow south" data-room="10" data-direction="south" aria-label="Living room, facing south">↓</button></div>
+          <div class="room-marker" id="camera-11" style="left:44.05237%;top:64.41289%"><button class="view-arrow southeast" data-room="11" data-direction="southeast" aria-label="Living and TV area, facing southeast">↘</button></div>
+          <div class="room-marker" id="camera-12" style="left:52.82430%;top:64.41289%"><button class="view-arrow north" data-room="12" data-direction="north" aria-label="Seating area, facing north">↑</button></div>
+          <div class="room-marker" id="camera-13" style="left:22.12254%;top:35.09691%"><button class="view-arrow north" data-room="13" data-direction="north" aria-label="Washroom, facing north">↑</button><button class="view-arrow west" data-room="13" data-direction="west" aria-label="Washroom, facing west">←</button></div>
+          <div class="room-marker" id="camera-14" style="left:52.82430%;top:51.08745%"><button class="view-arrow north" data-room="14" data-direction="north" aria-label="Bathroom, facing north">↑</button><button class="view-arrow west" data-room="14" data-direction="west" aria-label="Bathroom, facing west">←</button></div>
+          <div class="room-marker" id="camera-15" style="left:61.59623%;top:19.10638%"><button class="view-arrow north" data-room="15" data-direction="north" aria-label="Master bathroom, facing north">↑</button><button class="view-arrow west" data-room="15" data-direction="west" aria-label="Master bathroom, facing west">←</button></div>
+        </div></div>
+        <div class="plan-caption"><span><span class="legend-dot"></span> Select a room arrow to open its view</span><span>N ↑ · North is at the top</span></div>
+      </section>
+    </main>
+    <footer class="bottom-bar"><span>VISHEH / SPACES TO LIVE IN</span><span>ARCHITECTURAL PRESENTATION</span></footer>
+  </div>
+  <dialog id="render-dialog" aria-labelledby="render-heading">
+    <div class="viewer-header"><button id="back-to-plan" class="back-button">← Back to floor plan</button><span class="eyebrow" id="view-label">FACING SOUTH</span></div>
+    <div class="render-stage"><img id="render-image" alt="Master bedroom render" hidden><div id="render-placeholder" class="render-placeholder"><span class="eyebrow">YOUR FIRST VIEWPOINT</span><h2>Your master bedroom.</h2><p>The master-bedroom render will appear here once added.</p></div></div>
+    <nav id="gallery-controls" class="gallery-controls" aria-label="Choose design type" hidden></nav>
+    <div class="viewer-caption"><div><p class="eyebrow">01 / INTERIOR VIEW</p><h2 id="render-heading">Master bedroom · Facing south</h2></div><p>Material close-ups will be added as your design details become available.</p></div>
+  </dialog>
+  <script src="render-data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
