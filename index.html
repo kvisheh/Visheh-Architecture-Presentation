@@ -7,12 +7,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="presentation">
+  <section id="access-gate" class="access-gate" aria-labelledby="access-title">
+    <div class="access-card">
+      <p class="eyebrow">VISHEH ARCHITECTURE</p>
+      <h1 id="access-title">Baagh Ferdows</h1>
+      <p class="description">Enter your passcode to view the presentation.</p>
+      <form id="access-form">
+        <label for="access-code">Passcode</label>
+        <input id="access-code" type="password" inputmode="numeric" autocomplete="current-password" required aria-describedby="access-error">
+        <button type="submit">Enter presentation →</button>
+        <p id="access-error" role="alert" aria-live="polite"></p>
+      </form>
+      <noscript>Enable JavaScript to open this presentation.</noscript>
+    </div>
+  </section>
+
+  <div class="presentation" id="client-presentation" hidden>
     <header class="top-bar"><a class="project-name" href="./">VISHEH <span>ARCHITECTURE</span></a><span class="project-label">RESIDENTIAL PROJECT / 216 m²</span></header>
     <main>
       <section class="intro"><p class="eyebrow">A HOME, FROM EVERY ANGLE</p><h1>Step inside.</h1><p class="description">Start with the plan. Select a viewpoint to explore the space.</p></section>
       <section class="plan-section" aria-labelledby="plan-heading">
-        <div class="section-heading"><h2 id="plan-heading">Baagh Ferdows</h2></div>
+        <div class="section-heading"><h2 id="plan-heading" tabindex="-1">Baagh Ferdows</h2></div>
         <div class="plan-scroll" tabindex="0" role="region" aria-label="Apartment plan; scroll horizontally on small screens"><div class="floor-plan" id="plan-stage">
           <div id="plan-placeholder" hidden></div>
           <img id="plan-image" src="assets/apartment-plan.png" alt="Floor plan of the 216 square metre apartment showing the updated apartment layout">

@@ -1,3 +1,35 @@
+// Basic client-side gate; this does not restrict access to static assets.
+const accessForm = document.querySelector('#access-form');
+accessForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const input = document.querySelector('#access-code');
+  const error = document.querySelector('#access-error');
+  const submit = accessForm.querySelector('button');
+  error.textContent = '';
+  submit.disabled = true;
+  try {
+    const bytes = new TextEncoder().encode(input.value.trim());
+    const hash = await crypto.subtle.digest('SHA-256', bytes);
+    const digest = Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
+    if (digest === '283f4babc7381fc303ef42fad8154c30eca7040f26bdb5913bec98cbee1ee2ff') {
+      document.querySelector('#access-gate').hidden = true;
+      document.querySelector('#client-presentation').hidden = false;
+      input.value = '';
+      document.querySelector('#plan-heading').focus({ preventScroll: true });
+      window.scrollTo(0, 0);
+    } else {
+      error.textContent = 'Incorrect passcode. Please try again.';
+      input.setAttribute('aria-invalid', 'true');
+      input.select();
+      input.focus();
+    }
+  } catch {
+    error.textContent = 'Please open this presentation using its HTTPS website address.';
+  } finally {
+    submit.disabled = false;
+  }
+});
+
 const dialog = document.querySelector('#render-dialog');
 let selectedView = '1-south';
 const renders = new Map(Object.entries(window.RENDER_IMAGES || {}));
