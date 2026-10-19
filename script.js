@@ -114,6 +114,7 @@ const renders = new Map(Object.entries(window.RENDER_IMAGES || {}));
 let renderIndex = 0;
 function showRender() {
   const images = renders.get(selectedView) || [];
+  document.querySelector('#render-type-caption').hidden = selectedView !== '2-east';
   const image = document.querySelector('#render-image');
   image.hidden = images.length === 0;
   document.querySelector('#render-placeholder').hidden = images.length > 0;
