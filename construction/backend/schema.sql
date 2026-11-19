@@ -49,6 +49,7 @@ create table public.progress_logs (
 create table public.login_throttle (
  key text primary key, window_start timestamptz not null default now(), attempts int not null default 0
 );
+alter table public.login_throttle enable row level security;
 revoke all on public.login_throttle from public,anon,authenticated;
 
 create or replace function public.can_access(p_project uuid, p_role text default null)

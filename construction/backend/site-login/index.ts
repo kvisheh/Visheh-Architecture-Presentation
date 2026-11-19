@@ -1,5 +1,5 @@
 // Supabase Edge Function. Deploy with --no-verify-jwt; login happens here, not in GitHub Pages.
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'npm:@supabase/supabase-js@2.95.0';
 const origin='https://kvisheh.github.io';
 const env=(k:string)=>Deno.env.get(k)||'';
 function reply(status:number,body:unknown){return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json','Access-Control-Allow-Origin':origin,'Access-Control-Allow-Headers':'apikey, content-type, authorization','Access-Control-Allow-Methods':'POST, OPTIONS','Cache-Control':'no-store'}})}
